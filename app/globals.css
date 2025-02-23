@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground: #F5F5F8;
+    --primary: #0047AB;
+    --secondary: #F6B129;
+    --divider: #D0D0D0;
+    --divider300: #646E89;
+    --hover-primary: #014098;
+    --hover-secondary: #FFB92E;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground: #F5F5F8;
+    --primary: #0047AB;
+    --secondary: #F6B129;
+    --divider: #D0D0D0;
+  }
+}
