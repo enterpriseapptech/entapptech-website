@@ -17,7 +17,7 @@ const TeamCard: React.FC<TeamCardProps> = ({ image, name, role }) => {
         alt={name}
         width={200}
         height={200}
-        className="w-full h-[300px] object-cover"
+        className="w-full h-[350px] object-cover"
       />
       <div className="py-4">
         <h3 className="text-[24px] font-medium mb-2 ">{name}</h3>

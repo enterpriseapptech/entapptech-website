@@ -77,7 +77,7 @@ const CompanyPageUI = () => {
 
           <motion.div
             {...parentItem}
-            className="grid px-4 grid-cols-1 md:grid-cols-4 mt-[64px]    gap-5"
+            className="grid px-4 grid-cols-1 md:grid-cols-3 mt-[64px]    gap-5"
           >
             {teamMembers.map((solution, index) => (
               <TeamCard key={index} {...solution} />

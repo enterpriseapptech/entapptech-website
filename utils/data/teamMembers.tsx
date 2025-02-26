@@ -7,21 +7,34 @@ export const teamMembers = [
     },
     {
       id: 2,
-      name: "Team Member 2",
-      role: "Role In Company",
-      image: "/images/image.png", 
+      name: "Mrs. Grace Unekwu Onekutu",
+      role: "Vice President Operations",
+      image: "/images/team-2.png", 
     },
     {
       id: 3,
-      name: "Team Member 3",
-      role: "Role In Company",
-      image: "/images/girl.png", 
+      name: "Barrister Maji",
+      role: "Legal Adviser",
+      image: "/images/team-3.png", 
     },
     {
       id: 4,
-      name: "Team Member 4",
-      role: "Role In Company",
-      image: "/images/image-2.png", 
+      name: "Joshua Obaje",
+      role: "Frontend Developer",
+      image: "/images/team-4.png", 
 
     },
+    {
+      id: 5,
+      name: "Emmanuel Kachikwu",
+      role: "UX Engineer",
+      image: "/images/image-2.png", 
+    },
+    {
+      id: 6,
+      name: "Virtue",
+      role: "Backend Developer",
+      image: "/images/image-2.png", 
+    },
+   
   ];
