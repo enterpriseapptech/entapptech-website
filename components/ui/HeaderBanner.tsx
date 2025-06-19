@@ -20,7 +20,7 @@ const HeaderBanner = ({ scroll }: { scroll: boolean }) => {
           </div>
           <div className=" flex items-center gap-2">
             <LuPhone size={16} className=" text-secondary" />
-            <span>(+44) 84783 48293</span>
+            <span>(+1) 61552 42890</span>
           </div>
         </div>
         <div className=" flex  flex-1  justify-end items-center gap-10">
