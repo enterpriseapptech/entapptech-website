@@ -255,33 +255,7 @@ const LandingPageUI = () => {
         </div>
       </section>
 
-      <section className=" relative z-20   bg-white py-10  md:py-20">
-        <motion.div {...parentItem} className=" max-width">
-          <motion.div variants={item} className=" text-center px-4 ">
-            <SectionTitle title="WHO WE ARE" />
-            <h2 className=" mt-2 main-header">
-              Meet the Team Behind the Innovation
-            </h2>
-            <p className="main-h5  text-divider-300  font-inter">
-              At the heart of Enterprise Application Tech LLC is a dedicated
-              team of experts committed to crafting innovative solutions. With
-              diverse skills and a shared vision, we collaborate to transform
-              complex challenges into impactful software solutions that drive
-              growth and success.
-            </p>
-          </motion.div>
-
-          <motion.div
-            {...parentItem}
-            className="grid px-4 grid-cols-1 md:grid-cols-3 mt-[64px]    gap-5"
-          >
-            {teamMembers.map((solution, index) => (
-              <TeamCard key={index} {...solution} />
-            ))}
-          </motion.div>
-        </motion.div>
-        <div id="get-in-touch" />
-      </section>
+      
 
       <GetInTouch />
     </main>
