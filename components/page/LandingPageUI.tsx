@@ -11,8 +11,6 @@ import FeatureCard from "../ui/FeatureCard";
 import { featuresData } from "@/utils/data/featuresData";
 import { solutionData } from "@/utils/data/solutionData";
 import SolutionCard from "../ui/SolutionCard";
-import { teamMembers } from "@/utils/data/teamMembers";
-import TeamCard from "../ui/TeamCard";
 import GetInTouch from "../GetInTouch";
 import ServiceSection from "../ServiceSection";
 import Image from "next/image";
