@@ -236,6 +236,27 @@ const LandingPageUI = () => {
         </motion.div>
       </section>
 
+      <section className="relative z-20   bg-foreground py-10 md:py-20 ">
+        <motion.div {...parentItem} className=" max-width ">
+          <motion.div variants={item} className=" text-center px-4 ">
+            <SectionTitle title="Our Team" />
+            <h2 className=" mt-2 main-header">
+              Our Team Members
+            </h2>
+          
+          </motion.div>
+
+          <motion.div
+            {...parentItem}
+            className="grid px-4 grid-cols-2  mt-[64px] md:grid-cols-2  gap-5 md:gap-10"
+          >
+            {teamMembers.map((solution, index) => (
+              <SolutionCard key={index} {...solution} />
+            ))}
+          </motion.div>
+        </motion.div>
+      </section>
+
       <section className=" relative z-20  text-white bg-stats-mbg  sm:bg-stats-bg ">
         <div className="  bg-cover  py-20  bg-[#0047AB]/95 md:bg-[#0047AB]/60">
           <motion.div
