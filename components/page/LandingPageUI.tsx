@@ -17,6 +17,9 @@ import Image from "next/image";
 import GetInTouchButton from "../button/GetInTouchButton";
 import { motion } from "framer-motion";
 import { item, parentItem } from "@/utils/motion";
+import { teamMembers } from "@/utils/data/teamMembers";
+// import TeamCard from "../ui/TeamCard";
+
 
 const LandingPageUI = () => {
   return (
@@ -251,7 +254,7 @@ const LandingPageUI = () => {
             className="grid px-4 grid-cols-2  mt-[64px] md:grid-cols-2  gap-5 md:gap-10"
           >
             {teamMembers.map((solution, index) => (
-              <SolutionCard key={index} {...solution} />
+              <SolutionCard title={""} key={index} {...solution} />
             ))}
           </motion.div>
         </motion.div>
