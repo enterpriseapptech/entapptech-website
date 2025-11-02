@@ -16,14 +16,14 @@ const GetInTouch = () => {
         >
           <div>
             <h3 className="  text-[24px] md:text-[32px] md:leading-[64px]  uppercase leading-[45px] font-semibold">
-              {`Let’s`} stay connected
+              Stay Connected with us
             </h3>
             <p className=" mt-2 font-inter md:text-[18px]  md:leading-[32px] leading-[24px] text-[14px] text-divider-300 pb-5">
-              At the heart of Enterprise Application Tech LLC is a dedicated
-              team of experts committed to crafting innovative solutions. With
-              diverse skills and a shared vision, we collaborate to transform
-              complex challenges into impactful software solutions that drive
-              growth and success.
+              At Enterprise Application Tech LLC, our strength lies in a
+              passionate team of experts dedicated to innovation. Bringing
+              together divers skills and a unified vision, we turn complex
+              challenges into powerful software solutions that fuel growth and
+              lasting success.
             </p>
           </div>
           <Image
