@@ -94,12 +94,11 @@ const AboutUsPageUI = () => {
                   </h2>
                 </h2>
                 <p className="  text-[14px] md:text-[18px]  md:mt-4 md:text-start text-divider-300 font-openSans">
-                  Our mission is to provide businesses with the tools they need
-                  to streamline processes, enhance operations, and foster
-                  growth. By offering tailored software solutions, we enable
-                  companies to overcome challenges and unlock their full
-                  potential. At entapp, we strive to be a trusted partner in
-                  your journey toward success.
+                  Our mission is to design and deliver innovative software
+                  solutions that empower business to thrive. We are committed to
+                  combining expertise, creativity and collaboration to transform
+                  challenges, opportunities, ensuring technology is not just
+                  accessible but impactful.
                 </p>
               </div>
 
@@ -110,12 +109,10 @@ const AboutUsPageUI = () => {
                   </h2>
                 </h2>
                 <p className="  text-[14px] md:text-[18px] md:mt-4 md:text-start text-divider-300 font-openSans">
-                  We envision a future where businesses, regardless of size, can
-                  seamlessly integrate technology into their operations, driving
-                  efficiency, innovation, and growth. Through our custom
-                  software solutions, we aim to bridge the gap between
-                  complexity and simplicity, making technology accessible and
-                  impactful for all.
+                  We aspire to create a world where businesses of all sizes can
+                  harness technology effortlessly. By delivering custom,
+                  user-focused software. We simplified complexity, fuel
+                  innovation and unlock sustainable growth.
                 </p>
               </div>
             </div>
