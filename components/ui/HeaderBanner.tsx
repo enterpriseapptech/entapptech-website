@@ -33,14 +33,14 @@ const HeaderBanner = ({ scroll }: { scroll: boolean }) => {
               <FaTwitter size={16} />
             </a>
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/people/Enterprise-App-Technology-LLC/61573028886140/"
               target="_blank"
               rel="noopener noreferrer"
             >
               <FaFacebookF size={16} />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://linkedin.com/company/enterprise-app-technology-inc"
               target="_blank"
               rel="noopener noreferrer"
             >
