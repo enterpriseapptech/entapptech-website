@@ -1,11 +1,12 @@
 import Image from "next/image";
 import { item } from "@/utils/motion";
 import { motion } from "framer-motion";
+import { urlFor } from "@/lib/sanity";
 
 // Define the props interface
 interface TeamCardProps {
   _id: string;
-  image: string;
+  image: any;
   name: string;
   role: string;
   description: string;
@@ -19,7 +20,7 @@ const TeamCard: React.FC<TeamCardProps> = ({
   onClick,
   _id
 }) => {
-  const imageUrl = image || '/images/image.png';
+  const imageUrl = image ? urlFor(image).url() : '/images/image.png';
 
   return (
     <motion.div

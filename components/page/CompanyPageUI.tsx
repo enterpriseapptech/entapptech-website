@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SectionTitle from "../ui/SectionTitle";
 import { servicesData } from "@/utils/data/servicesData";
 import ServiceCard from "../ui/ServiceCard";
-import { teamMembersData, TeamMemberData } from "@/utils/data/teamData";
+import { getTeamMembers, TeamMember } from "@/lib/sanityQueries";
 import TeamCard from "../ui/TeamCard";
 import ServiceSection from "../ServiceSection";
 import GetInTouchButton from "../button/GetInTouchButton";
@@ -14,10 +14,24 @@ import PageHeroSection from "../ui/PageHeroSection";
 import TeamMemberModal from "../ui/TeamMemberModal";
 
 const CompanyPageUI = () => {
-  const [selectedMember, setSelectedMember] = useState<TeamMemberData | null>(null);
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  const teamMembers = teamMembersData;
+  useEffect(() => {
+    async function fetchTeamMembers() {
+      try {
+        const members = await getTeamMembers();
+        setTeamMembers(members);
+      } catch (error) {
+        console.error('Error fetching team members:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchTeamMembers();
+  }, []);
 
   const handleTeamCardClick = (id: string) => {
     const member = teamMembers.find(member => member._id === id);
@@ -98,13 +112,19 @@ const CompanyPageUI = () => {
             {...parentItem}
             className="grid px-4 grid-cols-1 md:grid-cols-3 mt-[64px] gap-5"
           >
-            {teamMembers.map((member) => (
-              <TeamCard
-                key={member._id}
-                {...member}
-                onClick={handleTeamCardClick}
-              />
-            ))}
+            {loading ? (
+              <p className="text-center col-span-3">Loading team members...</p>
+            ) : teamMembers.length > 0 ? (
+              teamMembers.map((member) => (
+                <TeamCard
+                  key={member._id}
+                  {...member}
+                  onClick={handleTeamCardClick}
+                />
+              ))
+            ) : (
+              <p className="text-center col-span-3">No team members found.</p>
+            )}
           </motion.div>
         </motion.div>
         <div id="get-in-touch" />

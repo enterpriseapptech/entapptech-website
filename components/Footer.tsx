@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { MapPin, Phone, Mail, Linkedin, Twitter, Facebook, Instagram, Github, Youtube } from 'lucide-react';
+import { getContactInfo, ContactInfo } from "@/lib/sanityQueries";
 
 const getSocialIcon = (platform: string) => {
   switch (platform) {
@@ -20,17 +21,22 @@ const getSocialIcon = (platform: string) => {
   }
 };
 
-// Temporary: contact details + social links hardcoded here while Sanity is disabled.
-const address = "2805 Foster Avenue, Suite 204, Nashville, TN 37210";
-const googleMapsUrl = "https://maps.google.com/?q=2805+Foster+Avenue+Suite+204+Nashville+TN+37210";
-const phone = "+1 (615) 524-2890";
-const email = "support@entapptech.com";
-const socialLinks = [
-  { platform: "linkedin", url: "https://linkedin.com/company/enterprise-app-technology-inc" },
-  { platform: "facebook", url: "https://www.facebook.com/people/Enterprise-App-Technology-LLC/61573028886140/" },
-];
+export default async function Footer() {
+  let contactInfo: ContactInfo | null = null;
+  try {
+    contactInfo = await getContactInfo();
+  } catch (error) {
+    console.error('Error fetching contact info:', error);
+  }
 
-export default function Footer() {
+  const address = contactInfo
+    ? `${contactInfo.address}, ${contactInfo.city}, ${contactInfo.state} ${contactInfo.zipCode}`
+    : "2805 Foster Avenue, Suite 204\nNashville, TN 37210";
+
+  const googleMapsUrl = contactInfo?.googleMapsUrl || "https://maps.google.com/?q=2805+Foster+Avenue+Suite+204+Nashville+TN+37210";
+  const phone = contactInfo?.phone || "+1 (615) 524-2890";
+  const email = contactInfo?.email || "support@entapptech.com";
+
   return (
     <div className="bg-primary text-white py-8 px-4">
       <footer className="max-width md:max-w-[1000px] flex flex-col gap-8">
@@ -52,44 +58,40 @@ export default function Footer() {
             <p className="font-semibold mb-3 text-lg">Contact Us</p>
 
             {/* Address with Map Icon */}
-            {address && (
-              <a
-                href={googleMapsUrl ?? "#"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-200 hover:text-secondary transition-colors flex items-center justify-center md:justify-end gap-2 cursor-pointer"
-              >
-                <MapPin size={16} />
-                <span className="whitespace-pre-line">{address}</span>
-              </a>
-            )}
+            <a
+              href={googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-200 hover:text-secondary transition-colors flex items-center justify-center md:justify-end gap-2 cursor-pointer"
+            >
+              <MapPin size={16} />
+              <span className="whitespace-pre-line">
+                {address}
+              </span>
+            </a>
 
             {/* Phone with Phone Icon */}
-            {phone && (
-              <a
-                href={`tel:${phone.replace(/\D/g, '')}`}
-                className="text-gray-200 hover:text-secondary transition-colors flex items-center justify-start gap-2 cursor-pointer mt-2"
-              >
-                <Phone size={16} />
-                <span>{phone}</span>
-              </a>
-            )}
+            <a
+              href={`tel:${phone.replace(/\D/g, '')}`}
+              className="text-gray-200 hover:text-secondary transition-colors flex items-center justify-start gap-2 cursor-pointer mt-2"
+            >
+              <Phone size={16} />
+              <span>{phone}</span>
+            </a>
+            {/* email Icon */}
+            <a
+              href={`mailto:${email}`}
+              className="text-gray-200 hover:text-secondary transition-colors flex items-center justify-start gap-2 cursor-pointer mt-2"
+            >
 
-            {/* Email with Mail Icon */}
-            {email && (
-              <a
-                href={`mailto:${email}`}
-                className="text-gray-200 hover:text-secondary transition-colors flex items-center justify-start gap-2 cursor-pointer mt-2"
-              >
-                <Mail size={16} />
-                <span>{email}</span>
-              </a>
-            )}
+              <Mail size={16} />
+              <span>{email}</span>
+            </a>
 
             {/* Social Links */}
-            {socialLinks.length > 0 && (
+            {contactInfo?.socialLinks && contactInfo.socialLinks.length > 0 && (
               <div className="flex items-center justify-center md:justify-start gap-4 mt-4">
-                {socialLinks.map((social, index) => (
+                {contactInfo.socialLinks.map((social, index) => (
                   <a
                     key={index}
                     href={social.url}
