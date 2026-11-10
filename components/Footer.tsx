@@ -1,46 +1,33 @@
-"use client";
-
-import { useState, useEffect } from "react";
 import Image from "next/image";
 import { MapPin, Phone, Mail, Linkedin, Twitter, Facebook, Instagram, Github, Youtube } from 'lucide-react';
 import { getContactInfo, ContactInfo } from "@/lib/sanityQueries";
 
-const Footer = () => {
-  const [contactInfo, setContactInfo] = useState<ContactInfo | null>(null);
-  const [loading, setLoading] = useState(true);
+const getSocialIcon = (platform: string) => {
+  switch (platform) {
+    case 'linkedin':
+      return <Linkedin size={20} />;
+    case 'twitter':
+      return <Twitter size={20} />;
+    case 'facebook':
+      return <Facebook size={20} />;
+    case 'instagram':
+      return <Instagram size={20} />;
+    case 'github':
+      return <Github size={20} />;
+    case 'youtube':
+      return <Youtube size={20} />;
+    default:
+      return null;
+  }
+};
 
-  useEffect(() => {
-    async function fetchContactInfo() {
-      try {
-        const info = await getContactInfo();
-        setContactInfo(info);
-      } catch (error) {
-        console.error('Error fetching contact info:', error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchContactInfo();
-  }, []);
-
-  const getSocialIcon = (platform: string) => {
-    switch (platform) {
-      case 'linkedin':
-        return <Linkedin size={20} />;
-      case 'twitter':
-        return <Twitter size={20} />;
-      case 'facebook':
-        return <Facebook size={20} />;
-      case 'instagram':
-        return <Instagram size={20} />;
-      case 'github':
-        return <Github size={20} />;
-      case 'youtube':
-        return <Youtube size={20} />;
-      default:
-        return null;
-    }
-  };
+export default async function Footer() {
+  let contactInfo: ContactInfo | null = null;
+  try {
+    contactInfo = await getContactInfo();
+  } catch (error) {
+    console.error('Error fetching contact info:', error);
+  }
 
   const address = contactInfo
     ? `${contactInfo.address}, ${contactInfo.city}, ${contactInfo.state} ${contactInfo.zipCode}`
@@ -132,6 +119,4 @@ const Footer = () => {
       </footer>
     </div>
   );
-};
-
-export default Footer;
+}
